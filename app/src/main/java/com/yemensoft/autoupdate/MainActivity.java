@@ -2,7 +2,9 @@ package com.yemensoft.autoupdate;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.github.javiersantos.appupdater.AppUpdater;
 import com.github.javiersantos.appupdater.enums.Display;
@@ -16,14 +18,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         AppUpdater appUpdater = new AppUpdater(this);
+        appUpdater.setDisplay(Display.DIALOG).setUpdateFrom(UpdateFrom.GITHUB)
+                .setGitHubUserAndRepo("med997", "AutoUpdater").showEvery(5).start();
 
-
-                appUpdater.setDisplay(Display.DIALOG);
-                appUpdater.setUpdateFrom(UpdateFrom.GITHUB);
-                appUpdater.setGitHubUserAndRepo("med997","AutoUpdate");
-
-        appUpdater.start();
     }
 
+
+    public void GoSecActivity(View view) {
+        startActivity(new Intent(this, MainActivity2.class));
+    }
 
 }
